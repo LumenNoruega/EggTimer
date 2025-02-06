@@ -6,8 +6,10 @@ app.whenReady().then(() => {
   mainWindow = new BrowserWindow({
     width: 400,
     height: 600,
+    frame: false, // 🔧 Elimina controles nativos de la ventana
+    resizable: false,
     webPreferences: {
-      nodeIntegration: true,  // ⚠️ Esto permite usar ipcRenderer en el frontend
+      nodeIntegration: true,
       contextIsolation: false
     }
   });
@@ -17,15 +19,24 @@ app.whenReady().then(() => {
   ipcMain.on("navigate", (event, page) => {
     mainWindow.loadFile(page);
   });
-});
 
-ipcMain.on("snooze-timer", () => {
+  ipcMain.on("snooze-timer", () => {
     setTimeout(() => {
-        mainWindow.loadFile("eggdone.html"); // 🔄 Vuelve a mostrar la alerta después de 1 min
+      mainWindow.loadFile("eggdone.html");
     }, 60000);
-});
+  });
 
-ipcMain.on("close-app", () => {
+  ipcMain.on("minimize-window", () => {
+    mainWindow.minimize();
+  });
+
+  ipcMain.on("close-app", () => {
     app.quit();
+  });
 });
 
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
+});

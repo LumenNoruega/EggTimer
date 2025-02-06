@@ -7,14 +7,37 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>⏳ Cocinando tu huevo...</h1>
-  <h2 id="timer">00:00</h2>
-  <img id="eggImage" src="images/default.png" width="150">
-  <button id="backBtn">Volver</button>
+
+    <script src="bar.js"></script>
+    <main>
+        <h1>⏳ Cocinando tu huevo...</h1>
+        
+        <!-- Contenedor de animación -->
+        <div id="eggAnimation">
+            <img id="animatedEgg" src="images/egg1.png" width="150">
+        </div>
+        
+        <h2 id="timer">00:00</h2>
+        <img id="eggImage" src="images/default.png" width="150">
+        <button id="backBtn">Volver</button>
+    </main>
 
   <script>
     const { ipcRenderer } = require("electron");
     let countdown;
+
+    // Imágenes del huevo
+    const eggImages = ["images/egg1.png", "images/egg2.png", "images/egg3.png", "images/egg4.png"];
+    let currentImageIndex = 0;
+
+    // Animación del huevo
+    function animateEgg() {
+      const animatedEgg = document.getElementById("animatedEgg");
+      setInterval(() => {
+        currentImageIndex = (currentImageIndex + 1) % eggImages.length;
+        animatedEgg.src = eggImages[currentImageIndex];
+      }, 500); 
+    }
 
     function startTimer() {
       let minutes = localStorage.getItem("eggTime");
@@ -30,10 +53,11 @@
         time--;
 
         if (time < 0) {
-            clearInterval(countdown);
-            ipcRenderer.send("navigate", "eggdone.html");
+          clearInterval(countdown);
+          timerDisplay.textContent = "¡Listo!";
+          eggImage.src = `images/${type}.png`;
+          ipcRenderer.send("navigate", "finished.html");
         }
-
       }, 1000);
     }
 
@@ -41,6 +65,7 @@
       ipcRenderer.send("navigate", "menu.html");
     });
 
+    animateEgg();
     startTimer();
   </script>
 </body>

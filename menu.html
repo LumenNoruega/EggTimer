@@ -7,17 +7,21 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>⏳ Selecciona el tipo de huevo</h1>
-  <div class="options">
-    <button onclick="selectTimer(3, 'soft')">Pasado por agua (3 min)</button>
-    <button onclick="selectTimer(6, 'medium')">Medio cocido (6 min)</button>
-    <button onclick="selectTimer(9, 'hard')">Duro (9 min)</button>
-    <button onclick="selectTimer(10, 'extrahard')">Extra Duro (10 min)</button>
-  </div>
+  <!-- Barra superior -->
+  <script src="bar.js"></script>
 
+  <main>
+    <h1>⏳ Selecciona el tipo de huevo</h1>
+    <div class="options">
+      <button onclick="selectTimer(3, 'soft')">Pasado por agua (3 min)</button>
+      <button onclick="selectTimer(6, 'medium')">Medio cocido (6 min)</button>
+      <button onclick="selectTimer(9, 'hard')">Duro (9 min)</button>
+      <button onclick="selectTimer(10, 'extrahard')">Extra Duro (10 min)</button>
+    </div>
+  </main>
+
+  <script src="scripts.js"></script>
   <script>
-    const { ipcRenderer } = require("electron");
-
     function selectTimer(minutes, type) {
       localStorage.setItem("eggTime", minutes);
       localStorage.setItem("eggType", type);

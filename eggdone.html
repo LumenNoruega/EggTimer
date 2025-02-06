@@ -7,12 +7,16 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>🥚 ¡El huevo está listo!</h1>
-  <p>Disfrútalo como más te guste.</p>
-  <div class="buttons">
-    <button id="snoozeBtn">Snooze (5 min)</button>
-    <button id="menuBtn">Menú</button>
-  </div>
+<script src="bar.js"></script>
+    
+    <main>
+        <h1>🥚 ¡El huevo está listo!</h1>
+        <p>Disfrútalo como más te guste.</p>
+        <div class="buttons">
+            <button id="snoozeBtn">Snooze (5 min)</button>
+            <button id="menuBtn">Menú</button>
+        </div>
+    </main>  
 
   <script>
     const { ipcRenderer } = require("electron");
