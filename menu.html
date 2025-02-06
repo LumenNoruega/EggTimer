@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selecciona tu huevo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>⏳ Selecciona el tipo de huevo</h1>
+  <div class="options">
+    <button onclick="selectTimer(3, 'soft')">Pasado por agua (3 min)</button>
+    <button onclick="selectTimer(6, 'medium')">Medio cocido (6 min)</button>
+    <button onclick="selectTimer(9, 'hard')">Duro (9 min)</button>
+    <button onclick="selectTimer(10, 'extrahard')">Extra Duro (10 min)</button>
+  </div>
+
+  <script>
+    const { ipcRenderer } = require("electron");
+
+    function selectTimer(minutes, type) {
+      localStorage.setItem("eggTime", minutes);
+      localStorage.setItem("eggType", type);
+      ipcRenderer.send("navigate", "timer.html");
+    }
+  </script>
+</body>
+</html>

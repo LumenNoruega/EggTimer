@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temporizador</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>⏳ Cocinando tu huevo...</h1>
+  <h2 id="timer">00:00</h2>
+  <img id="eggImage" src="images/default.png" width="150">
+  <button id="backBtn">Volver</button>
+
+  <script>
+    const { ipcRenderer } = require("electron");
+    let countdown;
+
+    function startTimer() {
+      let minutes = localStorage.getItem("eggTime");
+      let type = localStorage.getItem("eggType");
+      let time = minutes * 60;
+      const timerDisplay = document.getElementById("timer");
+      const eggImage = document.getElementById("eggImage");
+
+      countdown = setInterval(() => {
+        let mins = Math.floor(time / 60);
+        let secs = time % 60;
+        timerDisplay.textContent = `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+        time--;
+
+        if (time < 0) {
+            clearInterval(countdown);
+            ipcRenderer.send("navigate", "eggdone.html");
+        }
+
+      }, 1000);
+    }
+
+    document.getElementById("backBtn").addEventListener("click", () => {
+      ipcRenderer.send("navigate", "menu.html");
+    });
+
+    startTimer();
+  </script>
+</body>
+</html>

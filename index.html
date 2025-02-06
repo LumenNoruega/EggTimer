@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egg Timer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>🍳 Bienvenido a Egg Timer</h1>
+  <button id="startBtn">Start</button>
+
+  <script>
+    const { ipcRenderer } = require("electron");
+    document.getElementById("startBtn").addEventListener("click", () => {
+      ipcRenderer.send("navigate", "menu.html");
+    });
+  </script>
+</body>
+</html>
