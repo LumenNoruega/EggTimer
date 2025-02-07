@@ -5,7 +5,7 @@ let mainWindow;
 app.whenReady().then(() => {
   mainWindow = new BrowserWindow({
     width: 400,
-    height: 600,
+    height: 500,
     frame: false, // 🔧 Elimina controles nativos de la ventana
     resizable: false,
     webPreferences: {

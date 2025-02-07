@@ -6,20 +6,21 @@
     --brown: #67452D;
     --borderyellow: #f9bd00;
     --backgroundyellow: #FFEA79;
+    --lightorange: #FF9A6B;
   }
 
   .window-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--borderyellow);
+    background-color: var(--backgroundyellow);
     padding: 0.5rem;
     height: 40px;
     box-sizing: border-box;
 }
 
 .title-text {
-    color: var(--brown);
+    color: #F07E5F;
     font-size: 1.5rem;
     font-weight: 400;
     margin-left: 10px;
@@ -49,14 +50,18 @@
     cursor: pointer;
     display: block;
     margin: 30px auto;
-  }
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
 
-  #startBtn:hover {
-    background-color: var(--lightorange);
-  }
+#startBtn:hover {
+    transform: scale(1.2);
+    background-color: #FF9A6B; /* Definí un color visible aquí */
+}
+
+
   
   body {
-    border: 5px solid var(--borderyellow);
+    border: 5px solid var(--borderyellow);/* bien*/
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -73,7 +78,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: var(--borderyellow);
+    background-color: var(--backgroundyellow);
     padding: 0.5rem;
     height: 40px;
     border-bottom: none;
@@ -87,6 +92,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 3px solid #f9bd00; 
+    box-sizing: border-box;
   }
   
   .window-bar img {
