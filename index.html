@@ -5,22 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Egg Timer ❤️</title>
   <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
-  <!-- Controles personalizados -->
+
   <script src="bar.js"></script>
   <main>
-  <h1>🍳 Egg Timer <3</h1>
-  <button id="startBtn">Iniciar</button>
+    <h1>Vamos a cocinar tu huevo 🍳 </h1>
+    <button id="backBtn"  class="styled-button">Iniciar</button>
   </main>
 
   <script>
-    const { ipcRenderer, remote } = require("electron");
+    const { ipcRenderer } = require("electron");
 
-    // Navegar al menú
-    document.getElementById("startBtn").addEventListener("click", () => {
-      ipcRenderer.send("navigate", "menu.html");
+    document.getElementById("backBtn").addEventListener("click", () => {
+      ipcRenderer.send("navigate", "menu.html"); 
     });
   </script>
 </body>

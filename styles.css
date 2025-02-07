@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 
 :root {
     --orange: #F07E5F;
@@ -7,9 +9,9 @@
     --borderyellow: #f9bd00;
     --backgroundyellow: #FFEA79;
     --lightorange: #FF9A6B;
-  }
+}
 
-  .window-controls {
+.window-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,28 +41,30 @@
 }
 
   /* Botón central */
-  #startBtn {
+/* Estilo reutilizable para botones */
+.styled-button {
     background-color: var(--orange);
     color: var(--white);
-    font-family: "Pixelify Sans";
+    font-family: "Pixelify Sans", sans-serif;
     font-size: 1.5rem;
     border: 2px solid var(--borderyellow);
     padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
     display: block;
-    margin: 30px auto;
+    margin-top: 10px;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-#startBtn:hover {
+.styled-button:hover {
     transform: scale(1.2);
-    background-color: #FF9A6B; /* Definí un color visible aquí */
+    background-color: #FF9A6B;
 }
 
 
+
   
-  body {
+body {
     border: 5px solid var(--borderyellow);/* bien*/
     height: 100vh;
     margin: 0;
@@ -71,10 +75,10 @@
     font-family: "Pixelify Sans", sans-serif;
     display: flex;
     flex-direction: column;
-  }
+}
   
   /* Barra superior */
-  .window-bar {
+.window-bar {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -84,9 +88,9 @@
     border-bottom: none;
     margin: 0;
     box-sizing: border-box;
-  }
+}
   
-  main {
+main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -94,19 +98,29 @@
     align-items: center;
     border: 3px solid #f9bd00; 
     box-sizing: border-box;
-  }
+}
   
-  .window-bar img {
+.window-bar img {
     cursor: pointer;
     width: 30px;
     margin-left: 10px;
-  }
+}
   
-  h1 {
+h1 {
     color: var(--brown);
     text-align: center;
     font-size: 2.18281rem;
     font-weight: 400;
     margin: 1rem;
-  }
-  
+}
+
+#timer {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    direction: ltr; 
+    unicode-bidi: normal;
+    color: var(--brown);
+    margin-bottom: 0;
+ }
+ 

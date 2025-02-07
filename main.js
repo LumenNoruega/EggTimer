@@ -1,16 +1,17 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
-
 let mainWindow;
 
 app.whenReady().then(() => {
   mainWindow = new BrowserWindow({
-    width: 400,
-    height: 500,
-    frame: false, // 🔧 Elimina controles nativos de la ventana
+    width: 1000,
+    height: 1000,
+    frame: false,
     resizable: false,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      enableRemoteModule: true,
+      webSecurity: false,
     }
   });
 
