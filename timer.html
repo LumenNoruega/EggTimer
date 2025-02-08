@@ -17,7 +17,6 @@
     </div>
 
     <h2 id="timer">00:00</h2>
-    <button id="backBtn" class="styled-button">Volver</button>
 
   </main>
 
@@ -25,10 +24,17 @@
     const { ipcRenderer } = require("electron");
 
     // Imágenes del huevo
-    const eggImages = ["images/egg1.png", "images/egg2.png", "images/egg3.png", "images/egg4.png"];
+    const eggImages = [
+      "images/egg1.png",
+      "images/egg2.png",
+      "images/egg3.png",
+      "images/egg4.png",
+      "images/egg5.png",
+      "images/egg6.png",
+      "images/egg7.png"
+    ];
     let currentImageIndex = 0;
 
-    // Animación del huevo
     function animateEgg() {
       const animatedEgg = document.getElementById("animatedEgg");
       setInterval(() => {
@@ -37,11 +43,13 @@
       }, 500);
     }
 
+    document.addEventListener("DOMContentLoaded", () => {
+      animateEgg();
+    });
+
     document.getElementById("backBtn").addEventListener("click", () => {
       ipcRenderer.send("navigate", "menu.html");
     });
-
-    animateEgg();
   </script>
   <script src="renderer.js"></script>
 </body>

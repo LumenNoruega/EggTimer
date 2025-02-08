@@ -3,8 +3,8 @@ let mainWindow;
 
 app.whenReady().then(() => {
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 1000,
+    width: 400,
+    height: 500,
     frame: false,
     resizable: false,
     webPreferences: {

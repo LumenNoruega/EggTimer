@@ -10,17 +10,46 @@
 <script src="bar.js"></script>
     
     <main>
-        <h1>🥚 ¡El huevo está listo!</h1>
-        <p>Disfrútalo como más te guste.</p>
+        <h1>El huevo está listo!</h1>
+
+        <!-- Contenedor de la animación -->
+        <div id="chickAnimation">
+            <img id="animatedChick" src="images/chick1.png" width="200">
+        </div>
+
         <div class="buttons">
-            <button id="snoozeBtn">Snooze (5 min)</button>
-            <button id="menuBtn">Menú</button>
+          <button id="snoozeBtn" class="styled-button">Snooze</button>
+          <button id="menuBtn" class="styled-button">Menú</button>          
         </div>
     </main>  
 
   <script>
     const { ipcRenderer } = require("electron");
 
+    // Secuencia de imágenes del pollito
+    const chickImages = [
+        "images/chick1.png",
+        "images/chick2.png",
+        "images/chick3.png",
+        "images/chick4.png",
+        "images/chick3.png",
+        "images/chick2.png"
+    ];
+    let currentImageIndex = 0;
+
+    // Función para animar la secuencia del pollito
+    function animateChick() {
+        const animatedChick = document.getElementById("animatedChick");
+        setInterval(() => {
+            currentImageIndex = (currentImageIndex + 1) % chickImages.length;
+            animatedChick.src = chickImages[currentImageIndex];
+        }, 500);
+    }
+
+    // Iniciar la animación al cargar la página
+    animateChick();
+
+    // Botones de navegación
     document.getElementById("snoozeBtn").addEventListener("click", () => {
       localStorage.setItem("eggTime", 5); // Reprogramar 5 minutos
       ipcRenderer.send("navigate", "timer.html");
